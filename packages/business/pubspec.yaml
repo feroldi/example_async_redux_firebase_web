@@ -4,8 +4,9 @@ environment:
   sdk: '>=2.9.0-21.10.beta <3.0.0'
 
 dependencies:
-  meta: ^1.2.2
+  async_redux: ^3.0.0
   collection: ^1.14.13
+  meta: ^1.1.8
 
 dev_dependencies:
   lint: ^1.2.0
