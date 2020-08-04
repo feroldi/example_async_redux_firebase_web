@@ -19,7 +19,7 @@ void main() {
       'And: the new added item should be at the end of the todo-list.', () {
     final todos = const TodoList.empty()
         .addItem(id: 0, title: 'Item #0')
-        .markItemAsDone(itemId: 0);
+        .toggleItemDone(itemId: 0);
 
     expect(todos, hasLength(1));
     expect(
@@ -42,7 +42,7 @@ void main() {
   test(
       'Given: a todo-list which has 2 items. '
       'And: the two items are marked as not-done. '
-      'When: marking the first item as done. '
+      'When: toggling the first item as done. '
       'Then: the first item should be marked as done. '
       'And: the second item should still be marked as not-done.', () {
     final todos = const TodoList.empty()
@@ -58,7 +58,7 @@ void main() {
       ]),
     );
 
-    final todosWithFirstItemMarkedAsDone = todos.markItemAsDone(itemId: 0);
+    final todosWithFirstItemMarkedAsDone = todos.toggleItemDone(itemId: 0);
 
     expect(todosWithFirstItemMarkedAsDone, hasLength(2));
     expect(

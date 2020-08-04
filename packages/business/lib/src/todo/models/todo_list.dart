@@ -5,19 +5,19 @@ import 'todo_item.dart';
 
 @immutable
 class TodoList extends DelegatingIterable<TodoItem> {
-  const TodoList.empty() : _todos = const [], super(const []);
+  const TodoList.empty()
+      : _todos = const [],
+        super(const []);
   const TodoList._(this._todos) : super(_todos);
 
   final List<TodoItem> _todos;
 
-  TodoList markItemAsDone({@required int itemId}) {
+  TodoList toggleItemDone({@required int itemId}) {
     final itemIndex = _todos.indexWhere((item) => item.id == itemId);
     final item = _todos[itemIndex];
 
-    assert(!item.isDone, 'Item is already marked as done!');
-
     return copyWith(
-        todos: List.of(_todos)..[itemIndex] = item.copyWith(isDone: true),
+      todos: List.of(_todos)..[itemIndex] = item.copyWith(isDone: !item.isDone),
     );
   }
 

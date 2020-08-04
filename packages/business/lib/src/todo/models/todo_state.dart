@@ -18,16 +18,23 @@ class TodoState {
   final TodoList todos;
   final int currentId;
 
-  TodoState addItemAndIncrementCurrentId({@required String title}) {
+  TodoState addItemAndIncrementCurrentId({
+    @required String title,
+    String description,
+  }) {
     return copyWith(
-      todos: todos.addItem(id: currentId, title: title),
+      todos: todos.addItem(
+        id: currentId,
+        title: title,
+        description: description,
+      ),
       currentId: currentId + 1,
     );
   }
 
-  TodoState markItemAsDone({@required int itemId}) {
+  TodoState toggleItemDone({@required int itemId}) {
     return copyWith(
-      todos: todos.markItemAsDone(itemId: itemId),
+      todos: todos.toggleItemDone(itemId: itemId),
     );
   }
 
